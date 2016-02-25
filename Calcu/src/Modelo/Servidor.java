@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Administrador
+ * @author David
  */
 public class Servidor extends Thread{
     

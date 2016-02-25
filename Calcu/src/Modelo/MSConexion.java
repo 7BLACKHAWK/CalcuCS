@@ -7,7 +7,7 @@ import java.net.Socket;
 
 /**
  *
- * @author Administrador
+ * @author David
  */
 public class MSConexion extends Thread{
     

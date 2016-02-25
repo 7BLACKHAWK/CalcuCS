@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
  *
  * @author David
  */
-public class Caratula extends javax.swing.JFrame {
+public final class Caratula extends javax.swing.JFrame {
     
     private Operacion operacion = null;    
 
