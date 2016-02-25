@@ -1,8 +1,9 @@
 package Modelo;
 
+import java.awt.HeadlessException;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -15,12 +16,15 @@ public class Servidor extends Thread{
     private int port;
     private JFrame ventana;
     
-    /** Creates a new instance of MServidor */
+    /** Creates a new instance of MServidor
+     * @param ventana
+     * @param port */
     public Servidor(JFrame ventana, int port) {
         this.port = port;
         this.ventana = ventana;
     }
     
+    @Override
     public void run(){
         //esta excecion se usa para abrir el puerto y luego cerrarlo con la funcion que no se quede colgado el programa esperando una nueva conexion 
         //tambien en este metodo se permite que se conecten varios al chat
@@ -35,7 +39,7 @@ public class Servidor extends Thread{
                         
             }
             
-        }catch(Exception e){
+        }catch(IOException | HeadlessException e){
             JOptionPane.showMessageDialog(ventana,"Error al abrir el puerto. Posiblemente ya esta en uso.");
         }
         try{
@@ -50,7 +54,7 @@ public class Servidor extends Thread{
     }
     
     public static void main(String[] args) {
-        new Servidor();
+        Servidor servidor = new Servidor();
     }    
     
 }

@@ -21,7 +21,6 @@ public class Operacion extends Thread{
     private Socket s;
     private boolean bConectado;
     Caratula caratula;
-    //private String nick;
     
     public Operacion(int port, String url, Caratula caratula) {
         this.port=port;
@@ -30,25 +29,14 @@ public class Operacion extends Thread{
         this.x="";
         this.y="";
         this.signo="";
-        //this.nick=nick;
     }    
 
-  /*  public Operacion(String x, String y, String signo) {
-        this.x = x;
-        this.y = y;
-        this.signo = signo;
-    }
-    
-    public Operacion() {
-        this.x = "";
-        this.y = "";
-        this.signo = "";
-    }*/
     
     public Operacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
     public void run(){
         try{
             s=new Socket(url, port);
@@ -60,21 +48,12 @@ public class Operacion extends Thread{
                 resultado=dis.readUTF();
                 switch(nCodigo){
                     case 1:
-                        //caratula.nuevaPersona(sTrama);
                         break;
                     case 2:
                         caratula.mensajeRecibido(resultado);
                         break;
-                    case 3:
-                        try{
-                            //int nPos = Integer.parseInt(sTrama);
-                            //caratula.borrarPersona(nPos);
-                        }catch(Exception e2){
-                        }
-                        break;
                 }
             }
-            //JOptionPane.showMessageDialog(ventana, "Se ha podido conectar");
         }catch(Exception e){
             JOptionPane.showMessageDialog(caratula, "No se pudo establecer la conexión");
         }
